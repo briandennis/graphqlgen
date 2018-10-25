@@ -325,7 +325,7 @@ export function extractGraphQLUnions(schema: DocumentNode) {
   return types
 }
 
-export function graphQLToTypecriptType(type: GraphQLType): string {
+export function graphQLToTypecriptFlowType(type: GraphQLType): string {
   const graphqlToTypescript: { [key: string]: string } = {
     String: 'string',
     Boolean: 'boolean',

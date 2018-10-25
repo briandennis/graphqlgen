@@ -18,7 +18,7 @@ import {
   getAbsoluteFilePath,
   getImportPathRelativeToOutput,
 } from './path-helpers'
-import { getTypeToFileMapping } from './ast'
+import { getTypeToFileMapping } from './utils'
 import { extractGraphQLTypesWithoutRootsAndInputs } from './source-helper'
 import { normalizeFilePath } from './utils'
 
@@ -151,7 +151,7 @@ export function parseModels(
       }))
     : []
   const overriddenModels = !!models.override ? models.override : {}
-  const typeToFileMapping = getTypeToFileMapping(filePaths)
+  const typeToFileMapping = getTypeToFileMapping(filePaths, language)
 
   return graphQLTypes.reduce((acc, type) => {
     if (overriddenModels[type.name]) {
