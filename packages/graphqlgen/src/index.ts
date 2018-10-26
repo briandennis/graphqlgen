@@ -33,6 +33,7 @@ import { generate as scaffoldFlow } from './generators/flow-scaffolder'
 
 import { parseConfig, parseContext, parseSchema, parseModels } from './parse'
 import { validateConfig } from './validation'
+import { replaceAll } from './utils'
 
 export type GenerateCodeArgs = {
   schema: DocumentNode
@@ -156,16 +157,14 @@ function writeResolversScaffolding(
     try {
       fs.writeFileSync(
         writePath,
-        f.code.replace(
+        replaceAll(
+          f.code,
           '[TEMPLATE-INTERFACES-PATH]',
           getImportPathRelativeToOutput(
             getAbsoluteFilePath(config.output, config.language),
             writePath,
           ),
         ),
-        {
-          encoding: 'utf-8',
-        },
       )
     } catch (e) {
       console.error(

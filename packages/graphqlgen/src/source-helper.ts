@@ -121,7 +121,10 @@ function extractTypeLike(
   schema: DocumentNode,
   node: FieldDefinitionNode | InputValueDefinitionNode,
 ) {
-  const typeLike: GraphQLType = {} as GraphQLType
+  const typeLike: GraphQLType = {
+    isRequired: false,
+    isArray: false
+  } as GraphQLType
   visit(node.type, {
     NonNullType() {
       typeLike.isRequired = true
