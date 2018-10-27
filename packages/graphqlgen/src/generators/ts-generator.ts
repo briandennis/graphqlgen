@@ -66,8 +66,6 @@ export function generate(args: GenerateArgs): string {
       }
     }, {})
 
-  console.log(typeToInputTypeAssociation)
-
   return `\
   ${renderHeader(args)}
 
