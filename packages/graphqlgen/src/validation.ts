@@ -7,7 +7,7 @@ import {
   Models,
   File,
 } from 'graphqlgen-json-schema'
-import { findTypescriptInterfaceByName } from './ast'
+import { findTypescriptInterfaceByName } from './introspection/ts-ast'
 import {
   outputDefinitionFilesNotFound,
   outputInterfaceDefinitionsNotFound,
@@ -18,7 +18,7 @@ import {
 import { extractGraphQLTypesWithoutRootsAndInputs } from './source-helper'
 import { normalizeFilePath, getTypeToFileMapping } from './utils'
 import { replaceVariablesInString, getPath, getDefaultName } from './parse'
-import { findFlowTypeByName } from './flow-ast'
+import { findFlowTypeByName } from './introspection/flow-ast'
 
 type Definition = {
   typeName: string
